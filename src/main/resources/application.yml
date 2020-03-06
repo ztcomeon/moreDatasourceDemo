@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  # jpa
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  #不加这句则默认为myisam引擎
+
+  # datasource
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/idea_test?serverTimezone=UTC&useSSL=false
+      username: root
+      password: 123456
+    secondary:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/idea_test_second?serverTimezone=UTC&useSSL=false
+      username: root
+      password: 123456
+
+#开启多数据源，且url变为jdbc-url
+  main:
+    allow-bean-definition-overriding: true
+
